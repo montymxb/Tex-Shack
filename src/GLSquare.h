@@ -33,8 +33,6 @@
 
 -(void)drawWithTexture: (GLuint) texture withMatrix: (GLKMatrix4) mvpMatrix withNormal: (GLKMatrix3) normalMatrix withR: (float) R withG: (float) G withB: (float) B withA: (float) alpha;
 
--(void)debugCallMe : (NSString *) alert;
-
 -(void)startOPX : (GLuint) texture;
 
 -(void)modifyTexture : (GLuint) texture;
