@@ -1,15 +1,28 @@
 //
-//  TexShack.m
+//  TexShack.h
+//  Bit Shooter
+//  Created by Benjamin Wilson Friedman (-mxb-) from www.UphouseWorks.com
 //
-//  Created by Benjamin Friedman (aka -mxb-) on 2/11/14.
+
+//Copyright (c) 2014 Benjamin Wilson Friedman
 //
-//  This code is unlicensed and hereby for use at your disgression
-//  You do not have to attribute any rights of this code to me, as i hold none.
-//  However any notice as to the source of this code would not go unappreciated!
-//  If you are interested in seeing this code in a running situation it is implemented
-//  in the app 'Bit Shooter' for iOS (it is free).
+//Permission is hereby granted, free of charge, to any person obtaining a copy
+//of this software and associated documentation files (the "Software"), to deal
+//in the Software without restriction, including without limitation the rights
+//to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//copies of the Software, and to permit persons to whom the Software is
+//furnished to do so, subject to the following conditions:
 //
+//The above copyright notice and this permission notice shall be included in
+//all copies or substantial portions of the Software.
 //
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
@@ -46,6 +59,8 @@
 
 -(void)drawSquare:(GLSquare *)someSquare atX:(float)xCord atY:(float)yCord withScale: (float) scalE andMVP: (GLKMatrix4) mvpMatrix andNormal: (GLKMatrix3) normalMatrix ;
 
--(void)drawCharactersCentered: (NSString *) c withX: (float) xx withY: (float) yy red: (float) red green: (float) green blue: (float) blue alpha: (float) alpha scale: (float) scalE matrix4: (GLKMatrix4) mvpMatrix matrixNormal: (GLKMatrix3) normalMatrix;
+-(void)drawCharactersReverseAlign: (NSString *) c withX: (float) xx withY: (float) yy red: (float) red green: (float) green blue: (float) blue alpha: (float) alpha scale: (float) scalE matrix4: (GLKMatrix4) mvpMatrix matrixNormal: (GLKMatrix3) normalMatrix;
+
+-(void)adjustXSpaceScale: (float) newXScale;
 
 @end

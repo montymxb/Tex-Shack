@@ -1,15 +1,31 @@
 //
 //  TexShack.m
 //
-//  Created by Benjamin Friedman (aka -mxb-) on 2/11/14.
+//  Created by Benjamin Wilson Friedman (aka -mxb-) on 2/11/14
+//  from www.UphouseWorks.com
 //
-//  This code is unlicensed and hereby for use at your disgression
-//  You do not have to attribute any rights of this code to me, as i hold none.
-//  However any notice as to the source of this code would not go unappreciated!
 //  If you are interested in seeing this code in a running situation it is implemented
 //  in the app 'Bit Shooter' for iOS (it is free).
+
+//Copyright (c) 2014 Benjamin Wilson Friedman
 //
+//Permission is hereby granted, free of charge, to any person obtaining a copy
+//of this software and associated documentation files (the "Software"), to deal
+//in the Software without restriction, including without limitation the rights
+//to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//copies of the Software, and to permit persons to whom the Software is
+//furnished to do so, subject to the following conditions:
 //
+//The above copyright notice and this permission notice shall be included in
+//all copies or substantial portions of the Software.
+//
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//THE SOFTWARE.
 
 #import "TexShack.h"
 #define COUNT 94
@@ -19,23 +35,23 @@
 
 const char supportedChars[] =
 {
-    '`', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+    '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', //0-9
     
-    '0', '-', '=', '~', '!', '@', '#', '$', '^', '&',
+    '0', '-', '=', '~', '!', '@', '#', '$', '^', '&', //10-19
     
-    '*', '(', ')', '_', '+', 'q', 'w', 'e', 'r', 't',
+    '*', '(', ')', '_', '+', 'q', 'w', 'e', 'r', 't', //20-29
     
-    'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Q', 'W',
+    'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'Q', 'W', //30-39
     
-    'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}',
+    'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', //40-49
     
-    '|', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
+    '|', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', //50-59
     
-    ';', '\'', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K',
+    ';', '\'', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', //60-69
     
-    'L', ':', '"', 'z', 'x', 'c', 'v', 'b', 'n', 'm',
+    'L', ':', '"', 'z', 'x', 'c', 'v', 'b', 'n', 'm', //70-79
     
-    ',', '.', '/', 'Z', 'X', 'C', 'V', 'B', 'N', 'M',
+    ',', '.', '/', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', //80-89
     
     '<', '>', '?', '%'
 };
@@ -79,12 +95,6 @@ float charXShift[] =
 
 float charYShift[] =
 {
-    //0, 0.5, 1.7, 1.1, //1.3
-    //1.4, 0.45, 0, 0,
-    //0, -1, -1, -1,
-    //-1, -1, -1, -1,
-    //-1, -1
-    
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -99,11 +109,6 @@ float charYShift[] =
 
 float charCompression[] =
 {
-    //1, 0.8, 0.7, 0.76,
-    //0.8, 0.9, 1, 1,
-    //1, 1, 1, 1,
-    //1, 1, 1, 1,
-    //1, 1
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -138,108 +143,108 @@ float charCompression[] =
         
         //set charXShift spacing
         charXShift[0] = 0.35;
-        charXShift[1] = 0.35;
-        charXShift[2] = 0.35;
-        charXShift[3] = 0.35;
-        charXShift[4] = 0.35;
-        charXShift[5] = 0.35;
-        charXShift[6] = 0.35;
-        charXShift[7] = 0.35;
-        charXShift[8] = 0.35;
-        charXShift[9] = 0.35;
+        charXShift[1] = 0.38;
+        charXShift[2] = 0.38;
+        charXShift[3] = 0.38;
+        charXShift[4] = 0.38;
+        charXShift[5] = 0.38;
+        charXShift[6] = 0.38;
+        charXShift[7] = 0.38;
+        charXShift[8] = 0.38;
+        charXShift[9] = 0.38;
         
-        charXShift[10] = 0.35;
-        charXShift[11] = 0.35;
-        charXShift[12] = 0.35;
-        charXShift[13] = 0.35;
-        charXShift[14] = 0.35;
-        charXShift[15] = 0.35;
-        charXShift[16] = 0.35;
-        charXShift[17] = 0.35;
-        charXShift[18] = 0.35;
-        charXShift[19] = 0.35;
+        charXShift[10] = 0.38;
+        charXShift[11] = 0.25;
+        charXShift[12] = 0.5;
+        charXShift[13] = 0.5;
+        charXShift[14] = 0.25;
+        charXShift[15] = 0.65;
+        charXShift[16] = 0.5;
+        charXShift[17] = 0.4;
+        charXShift[18] = 0.5;
+        charXShift[19] = 0.45;
         
         charXShift[20] = 0.35;
         charXShift[21] = 0.35;
         charXShift[22] = 0.35;
         charXShift[23] = 0.35;
-        charXShift[24] = 0.35;
-        charXShift[25] = 0.35;
-        charXShift[26] = 0.35;
+        charXShift[24] = 0.52;
+        charXShift[25] = 0.38;
+        charXShift[26] = 0.55;
         charXShift[27] = 0.35;
         charXShift[28] = 0.27;
         charXShift[29] = 0.27;
         
         charXShift[30] = 0.35;
-        charXShift[31] = 0.35;
-        charXShift[32] = 0.35;
+        charXShift[31] = 0.4;
+        charXShift[32] = 0.16;
         charXShift[33] = 0.35;
         charXShift[34] = 0.35;
         charXShift[35] = 0.35;
         charXShift[36] = 0.35;
         charXShift[37] = 0.35;
-        charXShift[38] = 0.35;
-        charXShift[39] = 0.35;
+        charXShift[38] = 0.5;
+        charXShift[39] = 0.6;
         
-        charXShift[40] = 0.35;
-        charXShift[41] = 0.35;
-        charXShift[42] = 0.35;
-        charXShift[43] = 0.35;
-        charXShift[44] = 0.35;
-        charXShift[45] = 0.35;
-        charXShift[46] = 0.35;
-        charXShift[47] = 0.35;
+        charXShift[40] = 0.4;
+        charXShift[41] = 0.45;
+        charXShift[42] = 0.4;
+        charXShift[43] = 0.4;
+        charXShift[44] = 0.45;
+        charXShift[45] = 0.25;
+        charXShift[46] = 0.5;
+        charXShift[47] = 0.4;
         charXShift[48] = 0.35;
         charXShift[49] = 0.35;
         
-        charXShift[50] = 0.35;
+        charXShift[50] = 0.25;
         charXShift[51] = 0.35;
         charXShift[52] = 0.35;
-        charXShift[53] = 0.35;
-        charXShift[54] = 0.35;
+        charXShift[53] = 0.4;
+        charXShift[54] = 0.2;
         charXShift[55] = 0.35;
         charXShift[56] = 0.35;
-        charXShift[57] = 0.35;
+        charXShift[57] = 0.2;
         charXShift[58] = 0.35;
-        charXShift[59] = 0.35;
+        charXShift[59] = 0.16;
         
         charXShift[60] = 0.35;
-        charXShift[61] = 0.35;
-        charXShift[62] = 0.35;
-        charXShift[63] = 0.35;
-        charXShift[64] = 0.35;
-        charXShift[65] = 0.35;
-        charXShift[66] = 0.35;
-        charXShift[67] = 0.35;
-        charXShift[68] = 0.35;
-        charXShift[69] = 0.35;
+        charXShift[61] = 0.2;
+        charXShift[62] = 0.43;
+        charXShift[63] = 0.43;
+        charXShift[64] = 0.45;
+        charXShift[65] = 0.4;
+        charXShift[66] = 0.5;
+        charXShift[67] = 0.5;
+        charXShift[68] = 0.3;
+        charXShift[69] = 0.43;
         
         charXShift[70] = 0.35;
         charXShift[71] = 0.35;
-        charXShift[72] = 0.35;
+        charXShift[72] = 0.3;
         charXShift[73] = 0.35;
         charXShift[74] = 0.35;
         charXShift[75] = 0.35;
-        charXShift[76] = 0.35;
-        charXShift[77] = 0.35;
-        charXShift[78] = 0.35;
-        charXShift[79] = 0.35;
+        charXShift[76] = 0.38;
+        charXShift[77] = 0.4;
+        charXShift[78] = 0.4;
+        charXShift[79] = 0.66;
         
         charXShift[80] = 0.35;
         charXShift[81] = 0.35;
         charXShift[82] = 0.35;
-        charXShift[83] = 0.35;
-        charXShift[84] = 0.35;
-        charXShift[85] = 0.35;
-        charXShift[86] = 0.35;
-        charXShift[87] = 0.35;
-        charXShift[88] = 0.35;
-        charXShift[89] = 0.35;
+        charXShift[83] = 0.43;
+        charXShift[84] = 0.43;
+        charXShift[85] = 0.5;
+        charXShift[86] = 0.45;
+        charXShift[87] = 0.45;
+        charXShift[88] = 0.48;
+        charXShift[89] = 0.5;
         
-        charXShift[90] = 0.35;
-        charXShift[91] = 0.35;
-        charXShift[92] = 0.35;
-        charXShift[93] = 0.35;
+        charXShift[90] = 0.5;
+        charXShift[91] = 0.45;
+        charXShift[92] = 0.4;
+        charXShift[93] = 0.6;
         charXShift[94] = 0.35;
         charXShift[95] = 0.35;
         charXShift[96] = 0.35;
@@ -332,7 +337,7 @@ float charCompression[] =
         CGImageRef img50 = [self createCGImageRef: @"crlB.png"];
         CGImageRef img51 = [self createCGImageRef: @"pipe.png"];
         CGImageRef img52 = [self createCGImageRef: @"a.png"];
-        CGImageRef img53 = [self createCGImageRef: @"s.png"];
+        CGImageRef img53 = [self createCGImageRef: @"imgS.png"];
         CGImageRef img54 = [self createCGImageRef: @"d.png"];
         CGImageRef img55 = [self createCGImageRef: @"f.png"];
         CGImageRef img56 = [self createCGImageRef: @"g.png"];
@@ -340,7 +345,7 @@ float charCompression[] =
         CGImageRef img58 = [self createCGImageRef: @"j.png"];
         CGImageRef img59 = [self createCGImageRef: @"k.png"];
         CGImageRef img60 = [self createCGImageRef: @"l.png"];
-        CGImageRef img61 = [self createCGImageRef: @";.png"]; //<----LOOK HERE FOR ERRORS
+        CGImageRef img61 = [self createCGImageRef: @";.png"];//<--- this does work
         CGImageRef img62 = [self createCGImageRef: @"'.png"];
         CGImageRef img63 = [self createCGImageRef: @"Ah.png"];
         CGImageRef img64 = [self createCGImageRef: @"Sh.png"];
@@ -576,12 +581,25 @@ float charCompression[] =
     return self;
 }
 
+-(void)adjustXSpaceScale:(float)newXScale
+{
+    short daReg = COUNT + 3;
+    
+    for(short x = 0; x < daReg; x++)
+    {
+        //apply
+        charXShift[x]*=newXScale;
+    }
+}
+
 -(GLuint)generateTexture:(CGImageRef)daImg
 {
     GLKTextureInfo *aTexture = [GLKTextureLoader textureWithCGImage: daImg options: nil error: NULL];
     
+    /*
     if(aTexture == nil)
         NSLog(@"aTexture has failed");
+     */
     
     return aTexture.name;
 }
@@ -596,7 +614,7 @@ float charCompression[] =
     
     CGImageRef img;
     
-    //if RETINA display and IPAD we need to manually compress our image in order to represent the same screen size
+    //if RETINA display and IPAD we need to manually compress our image in order to represent the same screen size but higher density
     if( isRetina && isIPad )
     {
         
@@ -626,14 +644,12 @@ float charCompression[] =
     else
         img = CGImageCreateWithPNGDataProvider( provider, NULL , kCGInterpolationHigh , kCGRenderingIntentDefault);
     
+    /*
     if( img == nil )
         NSLog(@"error thrown:%@", inputFile);
+     */
     
     CGDataProviderRelease(provider);
-    
-    //UIImage* sourceImage = [UIImage imageNamed: inputFile];
-    //UIImage* flippedImage = [UIImage imageWithCGImage:sourceImage.CGImage
-    //                                            scale:sourceImage.scale orientation: UIImageOrientationUpMirrored];
     
     return img;
 }
@@ -662,29 +678,7 @@ float charCompression[] =
     return 0;
 }
 
-/*
--(void)drawCharacter: (char) c withX: (float) xx withY: (float) yy red: (float) red green: (float) green blue: (float) blue alpha: (float) alpha scale: (float) scalE matrix4: (GLKMatrix4) mvpMatrix matrixNormal: (GLKMatrix3) normalMatrix
-{
-    if(c != ' ')
-    {
-        BOOL isSupported = false;
-        for(short x = 0; x < COUNT; x++)
-            if( c == supportedChars[x])
-            {
-                isSupported = true;
-                [texSquare startOPXwithTexture: texIds[0] withRed: red withGreen: green withBlue: blue andAlpha: alpha];
-                [self drawSquare: texSquare atX: xx atY: yy + charYShift[x] withScale: scalE * charCompression[x] andMVP: mvpMatrix andNormal: normalMatrix];
-                //[self drawSquare: texSquare withTexture: texIds[x] atX: xx atY: yy + charYShift[x] withR: red withG: green withB: blue withA: alpha withScale: scalE * charCompression[x] andMVP: mvpMatrix andNormal: normalMatrix];
-                break;
-            }
-        
-        if(!isSupported)
-            [NSException raise:@"Unsupported char error" format:@"--->>char '%d' is not supported", c];
-    }
-}
-*/
-
--(void)drawCharactersCentered:(NSString *)c withX:(float)xx withY:(float)yy red:(float)red green:(float)green blue:(float)blue alpha:(float)alpha scale:(float)scalE matrix4:(GLKMatrix4)mvpMatrix matrixNormal:(GLKMatrix3)normalMatrix
+-(void)drawCharactersReverseAlign:(NSString *)c withX:(float)xx withY:(float)yy red:(float)red green:(float)green blue:(float)blue alpha:(float)alpha scale:(float)scalE matrix4:(GLKMatrix4)mvpMatrix matrixNormal:(GLKMatrix3)normalMatrix
 {
     short ourSize = [c length] - 1;
     xx+=(ourSize * genericSpacingRatio);
@@ -752,7 +746,6 @@ float charCompression[] =
                             isSupported = true;
                             [texSquare modifyTexture: texIds[y] withRed: -1 withGreen: -1 withBlue: -1 andAlpha: -1];
                             [self drawSquare: texSquare atX: xx - printLocation atY: yy + charYShift[y] * scalE withScale: scalE * charCompression[y] andMVP: mvpMatrix andNormal: normalMatrix];
-                            //[self drawSquare: texSquare withTexture: texIds[y] atX: xx - printLocation atY: yy + charYShift[y] * scalE withR: red withG: green withB: blue withA: alpha withScale: scalE * charCompression[y] andMVP: mvpMatrix andNormal: normalMatrix];
                             printLocation+=(charXShift[y] * scalE);
                             break;
                         }
@@ -786,8 +779,6 @@ float charCompression[] =
             }
             [texSquare modifyTexture: texIds[nine4or5 + realnine5or4] withRed: -1 withGreen: -1 withBlue: -1 andAlpha: -1];
             [self drawSquare: texSquare atX: xx - printLocation atY: yy + extraCharsYShift[nine4or5] * scalE withScale: scalE * extraCharsCompression[nine4or5] andMVP: mvpMatrix andNormal: normalMatrix];
-            //[self drawSquare: texSquare withTexture: texIds[nine4or5 + realnine5or4] atX: xx - printLocation atY: yy + extraCharsYShift[nine4or5] * scalE withR: red withG: green withB: blue withA: alpha withScale: scalE * extraCharsCompression[nine4or5] andMVP: mvpMatrix andNormal: normalMatrix];
-            
             printLocation+=(extraCharsXShift[nine4or5] * scalE);
         }
     }
@@ -811,7 +802,6 @@ float charCompression[] =
                 if( ourCharacters[x] == supportedChars[y])
                 {
                     isSupported = true;
-                    //[self drawSquare: texSquare withTexture: texIds[y] atX: xx - printLocation atY: yy + charYShift[y] * scalE withR: red withG: green withB: blue withA: alpha withScale: scalE * charCompression[y] andMVP: mvpMatrix andNormal: normalMatrix];
                     [texSquare modifyTexture: texIds[y] withRed: -1 withGreen: -1 withBlue: -1 andAlpha: -1];
                     [self drawSquare: texSquare atX: xx - printLocation atY: yy + charYShift[y] * scalE withScale: scalE * charCompression[y] andMVP: mvpMatrix andNormal: normalMatrix];
                     printLocation+=(charXShift[y] * scalE);
@@ -842,29 +832,13 @@ float charCompression[] =
     {
         GLKMatrix4 scaleMatrixF = GLKMatrix4MakeScale( scalE, scalE, 1);
         mvpMatrix = GLKMatrix4Multiply( scaleMatrixF, mvpMatrix);
-        //resultX*=scalE;
-        //resultY*=scalE;
     }
     
     GLKMatrix4 baseTransForward = GLKMatrix4MakeTranslation( resultX / width, resultY / height, 0.0f);
     mvpMatrix = GLKMatrix4Multiply( baseTransForward,  mvpMatrix);
     
     
-    
-    //[someSquare drawWithTexture: textureID withMatrix: mvpMatrix withNormal: normalMatrix withR: reD withG: greeN withB: bluE withA: alphA];
     [someSquare drawOPXwithMatrix: mvpMatrix withNormal: normalMatrix];
-    
-    
-    GLKMatrix4 baseTransBack = GLKMatrix4MakeTranslation( -resultX / width, -resultY / height, 0.0f);
-    mvpMatrix = GLKMatrix4Multiply( baseTransBack,  mvpMatrix);
-    
-    if(scalE != 1)
-    {
-        GLKMatrix4 scaleMatrixB = GLKMatrix4MakeScale( 1/scalE, 1/scalE, 1);
-        mvpMatrix = GLKMatrix4Multiply( scaleMatrixB, mvpMatrix);
-        //resultX/=scalE;
-        //resultY/=scalE;
-    }
 }
 
 -(void)dealloc
@@ -872,7 +846,8 @@ float charCompression[] =
     if(extraChars != nil)
         [extraChars release];
     
-    for(short x = 0; x <= COUNT + 2; x++)
+    short c2 = COUNT + 2;
+    for(short x = 0; x <= c2; x++)
         glDeleteTextures( 1, &texIds[x]);
     
     free(texIds), texIds = NULL;

@@ -2,9 +2,26 @@
 //  GLSquare.m
 //  Bit Shooter
 //
-//  Created by Benjamin Friedman on 1/31/14.
-//  Copyright (c) 2014 -MXB0. All rights reserved.
 //
+//Copyright (c) 2014 Benjamin Wilson Friedman
+//
+//Permission is hereby granted, free of charge, to any person obtaining a copy
+//of this software and associated documentation files (the "Software"), to deal
+//in the Software without restriction, including without limitation the rights
+//to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//copies of the Software, and to permit persons to whom the Software is
+//furnished to do so, subject to the following conditions:
+//
+//The above copyright notice and this permission notice shall be included in
+//all copies or substantial portions of the Software.
+//
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//THE SOFTWARE.
 
 #import "GLSquare.h"
 
@@ -30,7 +47,7 @@ const GLubyte textureCords[] =
     0, 1
 };
 
-const GLubyte indices[] =
+const GLubyte indicesWHO[] =
 {
     1, 0, 2, 3
 };
@@ -139,7 +156,7 @@ const GLubyte indices[] =
         //generate index buffer
         glGenBuffers( 1, &_indexBuffer);
         glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
-        glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+        glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesWHO), indicesWHO, GL_STATIC_DRAW);
         
         
         //generate texture buffer
@@ -168,7 +185,7 @@ const GLubyte indices[] =
     GLuint shaderHandle = glCreateShader(shaderType);
     
     const char *shaderStringUTF8 = [shaderContent UTF8String];
-    int shaderStringLength = [shaderContent length];
+    int shaderStringLength = (int)[shaderContent length];
     
     glShaderSource( shaderHandle, 1, &shaderStringUTF8, &shaderStringLength);
     
@@ -326,12 +343,6 @@ const GLubyte indices[] =
     colorsTex[1] = 1;
     colorsTex[2] = 1;
     colorsTex[3] = 1;
-}
-
-
--(void)dealloc
-{
-    [super dealloc];
 }
 
 @end
