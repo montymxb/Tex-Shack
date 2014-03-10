@@ -13,7 +13,7 @@ Included:
 •src folder contains:
 
 
-	-GLSquare class for drawing textured squares (glyphs)
+	-GLSquareBatch class for drawing textured squares (glyphs)
 	
 	-TexShack class for converting string data into corresponding bitmap glyphs
 	
@@ -26,7 +26,7 @@ Included:
 ------------
  HOW TO USE
 ------------
-1.Place both the GLSquare and TexShack class files in your project root.
+1.Place both the GLSquareBatch and TexShack class files in your project root.
 
 2.Place all the .png's contained within glyphs/supportingFiles/ into (you guessed) your project's supportingFiles folder.
 NOTE: This can make your supportingFiles folder quite, messy. Feel free to set up a subfolder instead, but you must make sure to
@@ -40,15 +40,11 @@ and this way I can demonstrate by example.
 
 ---------------------
 That's it!
-Be aware this is not a final product, this is just something I've put together out of necessity, but figured it'd be worth sharing nonetheless.
-If you're interested this code can be seen at work in the iOS app 'Bit Shooter'.
+This was just something I've put together out of necessity, but figured it'd be worth sharing nonetheless.
+If you're interested this code can be seen at work in the app 'Bit Shooter' in the App Store.
 
 
-Also there is a small to do list consisting of:
-
-	-Setting up draw call batching
-	
-	-Setting up a texture atlas (that is an awful lot of textures and images to be loading seperately)
+Also at some point I will be setting up a texture atlas (that is an awful lot of textures and images to be loading seperately).
 
 When I get time I'll take care of these, however if you have experience with either of these techniques and are willing to lend a hand, contact me.
 

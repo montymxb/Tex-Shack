@@ -26,7 +26,7 @@
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
 
-@interface GLSquare : NSObject
+@interface GLSquareBatch : NSObject
 {
     
     @private
@@ -58,5 +58,17 @@
 -(void)startOPXwithTexture:(GLuint)texture withRed: (float) reD withGreen: (float) greeN withBlue: (float) bluE andAlpha: (float) alphA;
 
 -(void)modifyTexture: (GLuint) texture withRed: (float) reD withGreen: (float) greeN withBlue: (float) bluE andAlpha: (float) alphA;
+
+-(void)startBatchWithTex: (GLuint) texture;
+
+-(void)startBatchWithTex: (GLuint) texture withR: (float) Red withG: (float) Green withB: (float) Blue withA: (float) Alpha;
+
+-(void)addToBatchTex: (GLuint) texture withMatrix: (GLKMatrix4)mvpMatrix;
+
+-(void)addToBatchTex: (GLuint) texture withMatrix: (GLKMatrix4)mvpMatrix withR: (float) Red withG: (float) Green withB: (float) Blue withA: (float) Alpha;
+
+-(void)finishBatch;
+
+-(void)finishBatch: (GLuint) texture;
 
 @end

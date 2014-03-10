@@ -26,7 +26,7 @@
 
 #import <Foundation/Foundation.h>
 #import <GLKit/GLKit.h>
-#import "GLSquare.h"
+#import "GLSquareBatch.h"
 
 @interface TexShack : NSObject
 {
@@ -39,7 +39,7 @@
     float height;
     float halfWidth;
     float halfHeight;
-    GLSquare *texSquare;
+    GLSquareBatch *texSquare;
     float genericSpacingRatio;
 }
 
@@ -53,11 +53,9 @@
 
 -(GLuint)retrieveTextureWithCharacter: (char) c;
 
-//-(void)drawCharacter: (char) c withX: (float) xx withY: (float) yy red: (float) red green: (float) green blue: (float) blue alpha: (float) alpha scale: (float) scalE matrix4: (GLKMatrix4) mvpMatrix matrixNormal: (GLKMatrix3) normalMatrix;
-
 -(void)drawCharacters: (NSString *) c withX: (float) xx withY: (float) yy red: (float) red green: (float) green blue: (float) blue alpha: (float) alpha scale: (float) scalE matrix4: (GLKMatrix4) mvpMatrix matrixNormal: (GLKMatrix3) normalMatrix;
 
--(void)drawSquare:(GLSquare *)someSquare atX:(float)xCord atY:(float)yCord withScale: (float) scalE andMVP: (GLKMatrix4) mvpMatrix andNormal: (GLKMatrix3) normalMatrix ;
+-(void)drawSquare:(GLSquareBatch *)someSquare withTex: (int) texture atX:(float)xCord atY:(float)yCord withScale: (float) scalE andMVP: (GLKMatrix4) mvpMatrix andNormal: (GLKMatrix3) normalMatrix withR: (float) Red withG: (float) Green withB: (float) Blue withA: (float) Alpha;
 
 -(void)drawCharactersReverseAlign: (NSString *) c withX: (float) xx withY: (float) yy red: (float) red green: (float) green blue: (float) blue alpha: (float) alpha scale: (float) scalE matrix4: (GLKMatrix4) mvpMatrix matrixNormal: (GLKMatrix3) normalMatrix;
 

@@ -128,7 +128,7 @@ float charCompression[] =
     {
         extraChars = [[NSArray alloc] initWithObjects: @"§", @"ø",nil];
         
-        texSquare = [[GLSquare alloc] init: 0.03 : 0.03];
+        texSquare = [[GLSquareBatch alloc] init: 0.03 : 0.03];
         curScale = scale;
         width = screenWidth;
         height = screenHeight;
@@ -692,7 +692,8 @@ float charCompression[] =
     short ourSize = [c length];
     short lastMark = 0;
     
-    [texSquare startOPXwithTexture: texIds[0] withRed: red withGreen: green withBlue: blue andAlpha: alpha];
+    //[texSquare startOPXwithTexture: texIds[0] withRed: red withGreen: green withBlue: blue andAlpha: alpha];
+    [texSquare startBatchWithTex: texIds[0] withR: red withG: green withB: blue withA: alpha];
     
     NSString *tmp = @"";
     for(short x = 0; x < ourSize; x++)
@@ -744,8 +745,8 @@ float charCompression[] =
                         if( ourCharacters[xmark] == supportedChars[y])
                         {
                             isSupported = true;
-                            [texSquare modifyTexture: texIds[y] withRed: -1 withGreen: -1 withBlue: -1 andAlpha: -1];
-                            [self drawSquare: texSquare atX: xx - printLocation atY: yy + charYShift[y] * scalE withScale: scalE * charCompression[y] andMVP: mvpMatrix andNormal: normalMatrix];
+                            //[texSquare modifyTexture: texIds[y] withRed: -1 withGreen: -1 withBlue: -1 andAlpha: -1];
+                            [self drawSquare: texSquare withTex: texIds[y] atX: xx - printLocation atY: yy + charYShift[y] * scalE withScale: scalE * charCompression[y] andMVP: mvpMatrix andNormal: normalMatrix withR: red withG: green withB: blue withA: alpha];
                             printLocation+=(charXShift[y] * scalE);
                             break;
                         }
@@ -777,8 +778,8 @@ float charCompression[] =
                 
                 nine4or5++;
             }
-            [texSquare modifyTexture: texIds[nine4or5 + realnine5or4] withRed: -1 withGreen: -1 withBlue: -1 andAlpha: -1];
-            [self drawSquare: texSquare atX: xx - printLocation atY: yy + extraCharsYShift[nine4or5] * scalE withScale: scalE * extraCharsCompression[nine4or5] andMVP: mvpMatrix andNormal: normalMatrix];
+            //[texSquare modifyTexture: texIds[nine4or5 + realnine5or4] withRed: -1 withGreen: -1 withBlue: -1 andAlpha: -1];
+            [self drawSquare: texSquare withTex: texIds[nine4or5 + realnine5or4] atX: xx - printLocation atY: yy + extraCharsYShift[nine4or5] * scalE withScale: scalE * extraCharsCompression[nine4or5] andMVP: mvpMatrix andNormal: normalMatrix withR: red withG: green withB: blue withA: alpha];
             printLocation+=(extraCharsXShift[nine4or5] * scalE);
         }
     }
@@ -802,8 +803,8 @@ float charCompression[] =
                 if( ourCharacters[x] == supportedChars[y])
                 {
                     isSupported = true;
-                    [texSquare modifyTexture: texIds[y] withRed: -1 withGreen: -1 withBlue: -1 andAlpha: -1];
-                    [self drawSquare: texSquare atX: xx - printLocation atY: yy + charYShift[y] * scalE withScale: scalE * charCompression[y] andMVP: mvpMatrix andNormal: normalMatrix];
+                    //[texSquare modifyTexture: texIds[y] withRed: -1 withGreen: -1 withBlue: -1 andAlpha: -1];
+                    [self drawSquare: texSquare withTex: texIds[y] atX: xx - printLocation atY: yy + charYShift[y] * scalE withScale: scalE * charCompression[y] andMVP: mvpMatrix andNormal: normalMatrix withR: red withG: green withB: blue withA: alpha];
                     printLocation+=(charXShift[y] * scalE);
                     break;
                 }
@@ -820,9 +821,11 @@ float charCompression[] =
         }
         free(ourCharacters), ourCharacters = NULL;
     }
+    
+    [texSquare finishBatch];
 }
 
--(void)drawSquare:(GLSquare *)someSquare atX:(float)xCord atY:(float)yCord withScale: (float) scalE andMVP: (GLKMatrix4) mvpMatrix andNormal: (GLKMatrix3) normalMatrix
+-(void)drawSquare:(GLSquareBatch *)someSquare withTex: (int) texture atX:(float)xCord atY:(float)yCord withScale: (float) scalE andMVP: (GLKMatrix4) mvpMatrix andNormal: (GLKMatrix3) normalMatrix withR: (float) Red withG: (float) Green withB: (float) Blue withA: (float) Alpha
 {
     
     float resultX = -(xCord - halfWidth) * 2.0;
@@ -838,7 +841,8 @@ float charCompression[] =
     mvpMatrix = GLKMatrix4Multiply( baseTransForward,  mvpMatrix);
     
     
-    [someSquare drawOPXwithMatrix: mvpMatrix withNormal: normalMatrix];
+    //[someSquare drawOPXwithMatrix: mvpMatrix withNormal: normalMatrix];
+    [someSquare addToBatchTex: texture withMatrix: mvpMatrix withR: Red withG: Green withB: Blue withA: Alpha];
 }
 
 -(void)dealloc
